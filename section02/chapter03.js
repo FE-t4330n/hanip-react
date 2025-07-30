@@ -1,5 +1,5 @@
 // 1. 배열 구조 분해 할당
-let arr = [123];
+let arr = [1, 2, 3];
 
 let [one, two, three] = arr;
 
