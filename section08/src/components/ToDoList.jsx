@@ -1,32 +1,37 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 
 const ToDoList = ({ todoList, setToDoList }) => {
     const onDelete = (e) => {
         setToDoList(
             todoList.filter((todo, idx) => {
-                console.log(idx, Number(e.target.value));
+                console.log(`e: ${e.target.value}`);
                 return idx !== Number(e.target.value);
             })
         );
     };
     return (
         <>
-            {todoList.map((todo, idx) => (
-                <div value={idx}>
-                    <input type="checkbox"></input>
-                    <div key={idx}>{todo}</div>
+            {todoList
+                .slice()
+                .reverse()
+                .map((todo, idx) => (
                     <div>
-                        {new Date()
-                            .toISOString()
-                            .slice(0, 10)
-                            .replace(/-/g, '.')}
+                        <input type="checkbox"></input>
+                        <div>{todo}</div>
+                        <div>
+                            {new Date()
+                                .toISOString()
+                                .slice(0, 10)
+                                .replace(/-/g, '.')}
+                        </div>
+                        <button
+                            value={todoList.length - idx - 1}
+                            onClick={onDelete}
+                        >
+                            삭제
+                        </button>
                     </div>
-                    <button value={idx} onClick={onDelete}>
-                        삭제
-                    </button>
-                </div>
-            ))}
-            {console.log()}
+                ))}
         </>
     );
 };
