@@ -7,10 +7,14 @@ function App() {
     const [count, setCount] = useState(0);
 
     return (
-        <div style={{ textAlign: 'center' }}>
-            <div>Simple Counter</div>
-            <Viewer count={count} />
-            <Controller count={count} setCount={setCount} />
+        <div className="App">
+            <h1>Simple Counter</h1>
+            <section>
+                <Viewer count={count} />
+            </section>
+            <section>
+                <Controller count={count} setCount={setCount} />
+            </section>
         </div>
     );
 }
