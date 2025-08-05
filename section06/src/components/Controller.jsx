@@ -1,50 +1,44 @@
-const Controller = ({ count, setCount }) => {
+const Controller = ({ onClickButton }) => {
     return (
         <div>
             <button
                 onClick={() => {
-                    count -= 1;
-                    setCount(count);
+                    onClickButton(-1);
                 }}
             >
                 -1
             </button>
             <button
                 onClick={() => {
-                    count -= 10;
-                    setCount(count);
+                    onClickButton(-10);
                 }}
             >
                 -10
             </button>
             <button
                 onClick={() => {
-                    count -= 100;
-                    setCount(count);
+                    onClickButton(-100);
                 }}
             >
                 -100
             </button>
             <button
                 onClick={() => {
-                    count += 100;
-                    setCount(count);
+                    onClickButton(100);
                 }}
             >
                 +100
             </button>
             <button
                 onClick={() => {
-                    count += 10;
-                    setCount(count);
+                    onClickButton(10);
                 }}
             >
                 +10
             </button>
             <button
                 onClick={() => {
-                    count += 1;
-                    setCount(count);
+                    onClickButton(1);
                 }}
             >
                 +1

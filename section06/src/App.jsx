@@ -6,6 +6,10 @@ import { useState } from 'react';
 function App() {
     const [count, setCount] = useState(0);
 
+    const onClickButton = (value) => {
+        setCount(count + value);
+    };
+
     return (
         <div className="App">
             <h1>Simple Counter</h1>
@@ -13,7 +17,7 @@ function App() {
                 <Viewer count={count} />
             </section>
             <section>
-                <Controller count={count} setCount={setCount} />
+                <Controller onClickButton={onClickButton} />
             </section>
         </div>
     );
