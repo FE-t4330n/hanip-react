@@ -21,16 +21,12 @@ function App() {
                 <Link to={'/'}>Home</Link>
                 <Link to={'/new'}>New</Link>
                 <Link to={'/diary'}>Diary</Link>
-
-                {/* <a href="/">Home</a>
-                <a href="/new">New</a>
-                <a href="/diary">Diary</a> */}
             </div>
             <button onClick={onClickButton}>New 페이지로 이동</button>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/new" element={<New />} />
-                <Route path="/diary" element={<Diary />} />
+                <Route path="/diary/:id" element={<Diary />} />
                 <Route path="/*" element={<Notfound />} />
             </Routes>
         </>
