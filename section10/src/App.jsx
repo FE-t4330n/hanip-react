@@ -1,4 +1,4 @@
-import { useState, useRef, useReducer } from 'react';
+import { useState, useRef, useReducer, useCallback } from 'react';
 import './App.css';
 import Editor from './components/Editor';
 import Header from './components/Header';
@@ -37,15 +37,16 @@ function reducer(state, action) {
             );
         case 'DELETE':
             return state.filter((item) => item.id !== action.targetId);
+        default:
+            return state;
     }
 }
 
 function App() {
     const [todos, dispatch] = useReducer(reducer, mockData);
-
     const idRef = useRef(3);
 
-    const onCreate = (content) => {
+    const onCreate = useCallback((content) => {
         dispatch({
             type: 'CREATE',
             data: {
@@ -55,27 +56,31 @@ function App() {
                 date: new Date().getTime(),
             },
         });
-    };
+    }, []);
 
-    const onUpdate = (targetId) => {
+    const onUpdate = useCallback((targetId) => {
         dispatch({
             type: 'UPDATE',
             targetId: targetId,
         });
-    };
+    }, []);
 
-    const onDelete = (targetId) => {
+    const onDelete = useCallback((targetId) => {
         dispatch({
             type: 'DELETE',
             targetId: targetId,
         });
-    };
+    }, []);
 
     return (
         <div className="App">
             <Header />
             <Editor onCreate={onCreate} />
-            <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
+            <List //
+                todos={todos}
+                onUpdate={onUpdate}
+                onDelete={onDelete}
+            />
         </div>
     );
 }
