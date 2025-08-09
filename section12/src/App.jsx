@@ -10,13 +10,13 @@ import Notfound from './pages/Notfound';
 const mockData = [
     {
         id: 1,
-        createdDate: new Date('2025-08-08').getTime(),
+        createdDate: new Date('2025-08-07').getTime(),
         emotionId: 1,
         content: '1번 일기 내용',
     },
     {
         id: 2,
-        createdDate: new Date('2025-08-07').getTime(),
+        createdDate: new Date('2025-08-08').getTime(),
         emotionId: 2,
         content: '2번 일기 내용',
     },
@@ -50,12 +50,10 @@ export const DiaryDispatchContext = createContext();
 
 function App() {
     const [data, dispatch] = useReducer(reducer, mockData);
-
     const idRef = useRef(3);
 
     // 새로운 일기 추가
     const onCreate = (createdDate, emotionId, content) => {
-        // 새로운 일기를 추가하는 기능
         dispatch({
             type: 'CREATE',
             data: {
@@ -103,7 +101,7 @@ function App() {
                         <Route path="/new" element={<New />} />
                         <Route path="/diary/:id" element={<Diary />} />
                         <Route path="/edit/:id" element={<Edit />} />
-                        <Route path="/*" element={<Notfound />} />
+                        <Route path="*" element={<Notfound />} />
                     </Routes>
                 </DiaryDispatchContext.Provider>
             </DiaryStateContext.Provider>

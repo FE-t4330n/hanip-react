@@ -1,4 +1,4 @@
-import getEmotionImage from './../utils/get-emotion-image';
+import { getEmotionImage } from './../utils/get-emotion-image';
 import Button from './Button';
 import './DiaryItem.css';
 import { useNavigate } from 'react-router-dom';
